@@ -1,0 +1,69 @@
+import pandas as pd
+import re
+from .base_processor import BaseProcessor
+
+class IncomingProcessor(BaseProcessor):
+
+    def process(self, file_path):
+        all_data = []
+        current_agent_id = None
+        current_agent_name = None
+        current_date = None
+
+        with open(file_path, 'r', encoding='utf-8-sig') as f:
+            lines = f.readlines()
+
+        for line in lines:
+            parts = line.strip().split(',')
+
+            # Détection Agent
+            # Modification : Nettoyage ID (zéro espace) et Nom (virgule -> espace)
+            agent_match = re.search(r"Agent\s+([\d\s\xa0]+):\s*(.*)", line)
+            if agent_match:
+                # ID : on supprime tous les types d'espaces (normaux et insécables \xa0)
+                raw_id = agent_match.group(1)
+                current_agent_id = re.sub(r"[\s\xa0]+", "", raw_id)
+                
+                # Nom : 
+                # 1. On nettoie les espaces et les guillemets de début/fin
+                raw_name = agent_match.group(2).strip().strip('"').strip("'")
+                # 2. On remplace la virgule par un espace
+                current_agent_name = raw_name.replace(',', ' ')
+                # 3. On supprime les guillemets qui pourraient rester collés à la fin du nom
+                current_agent_name = current_agent_name.rstrip('"').rstrip("'")
+                # 4. On réduit les doubles espaces éventuels en un seul
+                current_agent_name = re.sub(r"\s+", " ", current_agent_name).strip()
+                continue
+
+            # Détection Date
+            date_match = re.search(r"Le\s+(\d{2}/\d{2}/\d{4})", line)
+            if date_match:
+                current_date = date_match.group(1)
+                continue
+
+            # Extraction des lignes horaires
+            if len(parts) > 1 and re.match(r"^\d{2}:\d{2}$", parts[1]):
+                row_dict = {
+                    'Date_Fichier': current_date,
+                    'Agent_ID': current_agent_id,
+                    'Agent_Name': current_agent_name,
+                    'Heure': parts[1],
+                    'Attente_Num': parts[3] if len(parts) > 3 else '',
+                    'Attente_Temps': parts[4] if len(parts) > 4 else '',
+                    #'Attente_Pct': parts[6] if len(parts) > 6 else '',
+                    'Supervision_Num': parts[8] if len(parts) > 8 else '',
+                    'Supervision_Temps': parts[10] if len(parts) > 10 else '',
+                    #'Supervision_Pct': parts[12] if len(parts) > 12 else '',
+                    'Traitement_Num': parts[14] if len(parts) > 14 else '',
+                    'Traitement_Temps': parts[15] if len(parts) > 15 else '',
+                    #'Traitement_Pct': parts[17] if len(parts) > 17 else '',
+                    'Post_Travail_Num': parts[19] if len(parts) > 19 else '',
+                    'Post_Travail_Temps': parts[20] if len(parts) > 20 else '',
+                    #'Post_Travail_Pct': parts[22] if len(parts) > 22 else '',
+                    'Pause_Num': parts[24] if len(parts) > 24 else '',
+                    'Pause_Temps': parts[25] if len(parts) > 25 else '',
+                    #'Pause_Pct': parts[27] if len(parts) > 27 else ''
+                }
+                all_data.append(row_dict)
+
+        return pd.DataFrame(all_data)
