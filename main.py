@@ -1,54 +1,58 @@
 import sys
 import os
-from processors.incoming_processor import IncomingProcessor
+from processors.distribution_etat_agent import DistributionEtatAgent
 from exporters.csv_exporter import export_csv
 from exporters.excel_exporter import export_excel
 from utils.file_utils import generate_filename, ensure_directory
-import pandas as pd
+from utils.converter import convert_xls_to_csv
 
+INPUT_DIR = "input"
 OUTPUT_DIR = "output"
+TEMP_DIR = "temp"
 
 def main():
 
-    # Vérification des arguments
     if len(sys.argv) < 2:
-        print("Usage : python main.py <fichier_csv>")
-        return
+        print("Usage : python main.py <nom_fichier.xls>")
+        sys.exit(1)
 
-    file_path = sys.argv[1]
+    file_name = sys.argv[1]
+    xls_path = os.path.join(INPUT_DIR, file_name)
 
-    if not os.path.exists(file_path):
-        print(f"Erreur : le fichier {file_path} n'existe pas.")
-        return
+    if not os.path.isfile(xls_path):
+        print("❌ Fichier introuvable dans input/")
+        sys.exit(1)
 
-    print(f"Traitement du fichier : {file_path}")
+    if not file_name.lower().endswith(".xls"):
+        print("❌ Le fichier doit être en .xls")
+        sys.exit(1)
+
+    print("🔄 Conversion XLS → CSV...")
+    csv_path = convert_xls_to_csv(xls_path, TEMP_DIR)
+
+    print("🚀 Traitement du CSV converti...")
+
+    processor = DistributionEtatAgent()
+    df_processed = processor.process(csv_path)
+
+    if df_processed.empty:
+        print("⚠️ Aucune donnée extraite.")
+        sys.exit(0)
 
     ensure_directory(OUTPUT_DIR)
 
-    # 1️⃣ Traitement incoming
-    processor = IncomingProcessor()
-    df_processed = processor.process(file_path)
+    filename = generate_filename("distribution_etat_agent")
 
-    if df_processed.empty:
-        print("Aucune donnée extraite.")
-        return
+    csv_output = os.path.join(OUTPUT_DIR, f"{filename}.csv")
+    excel_output = os.path.join(OUTPUT_DIR, f"{filename}.xlsx")
 
-    # 2️⃣ Génération nom dynamique
-    extracted_date = getattr(processor, "extracted_date", None)
-    filename = generate_filename("incoming", extracted_date)
+    export_csv(df_processed, csv_output)
+    export_excel(df_processed, excel_output)
 
-    # 3️⃣ Chemins de sortie
-    csv_path = os.path.join(OUTPUT_DIR, f"{filename}.csv")
-    excel_path = os.path.join(OUTPUT_DIR, f"{filename}.xlsx")
-
-    # 4️⃣ Export
-    export_csv(df_processed, csv_path)
-    export_excel(df_processed, excel_path)
-
-    print("✅ Traitement terminé")
-    print(f"📁 Fichier CSV : {csv_path}")
-    print(f"📁 Fichier XLSX : {excel_path}")
-    print(f"📊 Nombre de lignes : {len(df_processed)}")
+    print("\n✅ Traitement terminé")
+    print(f"📁 CSV : {csv_output}")
+    print(f"📁 XLSX : {excel_output}")
+    print(f"📊 Lignes : {len(df_processed)}")
 
 
 if __name__ == "__main__":
