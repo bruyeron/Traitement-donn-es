@@ -1,14 +1,42 @@
 import sys
 import os
+
 from processors.distribution_etat_agent import DistributionEtatAgent
+from processors.distribution_appel import DistributionAppel
+
 from exporters.csv_exporter import export_csv
 from exporters.excel_exporter import export_excel
+
 from utils.file_utils import generate_filename, ensure_directory
 from utils.converter import convert_xls_to_csv
+
 
 INPUT_DIR = "input"
 OUTPUT_DIR = "output"
 TEMP_DIR = "temp"
+
+
+def choose_processor():
+    """
+    Demande à l'utilisateur quel traitement effectuer
+    """
+
+    print("\nChoisissez le type de traitement :")
+    print("1 - Distribution Etat Agent")
+    print("2 - Distribution Appel")
+
+    choice = input("Votre choix : ").strip()
+
+    if choice == "1":
+        return DistributionEtatAgent(), "distribution_etat_agent"
+
+    elif choice == "2":
+        return DistributionAppel(), "distribution_appel"
+
+    else:
+        print("❌ Choix invalide")
+        sys.exit(1)
+
 
 def main():
 
@@ -27,12 +55,13 @@ def main():
         print("❌ Le fichier doit être en .xls")
         sys.exit(1)
 
-    print("🔄 Conversion XLS → CSV...")
+    # Choix du processor
+    processor, processor_name = choose_processor()
+
+    print("\n🔄 Conversion XLS → CSV...")
     csv_path = convert_xls_to_csv(xls_path, TEMP_DIR)
 
     print("🚀 Traitement du CSV converti...")
-
-    processor = DistributionEtatAgent()
     df_processed = processor.process(csv_path)
 
     if df_processed.empty:
@@ -41,7 +70,8 @@ def main():
 
     ensure_directory(OUTPUT_DIR)
 
-    filename = generate_filename("distribution_etat_agent")
+    # Nom du fichier basé sur le traitement
+    filename = generate_filename(processor_name, processor.extracted_date)
 
     csv_output = os.path.join(OUTPUT_DIR, f"{filename}.csv")
     excel_output = os.path.join(OUTPUT_DIR, f"{filename}.xlsx")

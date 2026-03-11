@@ -60,6 +60,7 @@ class DistributionEtatAgent(BaseProcessor):
 
             # Nettoyage de la ligne
             cleaned = [x for x in row_list if x != ""]
+            cleaned = [x.replace("h", ":").replace("'", ":") for x in cleaned]
 
             # Si moins de 5 colonnes après nettoyage, ignorer
             if len(cleaned) < 5:
