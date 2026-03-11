@@ -2,13 +2,14 @@ from datetime import datetime
 import os
 
 def generate_filename(base_name, extracted_date=None):
-    today = datetime.now().strftime("%d-%m-%Y")
-
+    # today = datetime.now().strftime("%d-%m-%Y")
+    print("📅 Date d'extraction :", extracted_date if extracted_date else "Non trouvée, utilisation de la date du jour")
+    
     if extracted_date:
         extracted_date = extracted_date.replace("/", "-")
-        return f"{base_name}_{extracted_date}_{today}"
+        return f"{base_name}_{extracted_date}"
 
-    return f"{base_name}_{today}"
+    return f"{base_name}"
 
 def ensure_directory(path):
     if not os.path.exists(path):
