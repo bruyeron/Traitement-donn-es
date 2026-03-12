@@ -1,0 +1,94 @@
+ÉTAPE 4 — Traiter tous les fichiers automatiquement
+
+Actuellement ton script fonctionne comme ça :
+
+python main.py fichier.xls
+
+Nous allons faire :
+
+le programme regarde input/
+et traite tous les fichiers
+
+Remplacer cette logique :
+
+if len(sys.argv) < 2:
+
+par :
+
+files = os.listdir(INPUT_DIR)
+
+for file in files:
+
+    if not file.lower().endswith(".xls"):
+        continue
+
+    xls_path = os.path.join(INPUT_DIR, file)
+
+Ton programme devient entièrement automatique.
+
+ÉTAPE 5 — Ajouter des logs
+
+Créer :
+
+logs/
+
+Puis dans main.py :
+
+import logging
+
+logging.basicConfig(
+    filename="logs/app.log",
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
+
+Puis remplacer les print importants par :
+
+logging.info("Traitement démarré")
+Ce que ton projet fera après ces étapes
+
+Ton pipeline deviendra :
+
+input/
+   ↓
+convert xls → csv
+   ↓
+detect processor
+   ↓
+process data
+   ↓
+export output/
+
+Et tout sera automatique.
+
+Étape suivante (quand tout ça marche)
+
+Après ça on pourra ajouter :
+
+Selenium
+↓
+connexion Vocalcom
+↓
+téléchargement automatique
+↓
+input/
+
+Et là ton système sera 100% autonome.
+
+Question importante avant de continuer
+
+Pour bien adapter l’étape suivante, j’ai besoin de savoir :
+
+👉 Comment tes deux fichiers se différencient actuellement ?
+
+Par exemple :
+
+colonnes différentes ?
+
+structure différente ?
+
+contenu texte différent ?
+
+Car ça va déterminer la meilleure stratégie pour detect_processor().
+
+Ensuite on pourra passer à l’étape suivante et refactoriser ton main.py proprement ensemble. 🚀

@@ -1,0 +1,111 @@
+2026-03-12 15:13:29,399 - INFO - Démarrage du pipeline de traitement
+2026-03-12 15:13:29,400 - INFO - Traitement du fichier : hRMsF0cC.xls
+2026-03-12 15:13:29,400 - INFO - Conversion XLS \u2192 CSV
+2026-03-12 15:13:29,688 - INFO - Processor détecté : distribution_appel
+2026-03-12 15:13:30,869 - INFO - Export CSV : output\distribution_appel_12-03-2026.csv
+2026-03-12 15:13:30,869 - INFO - Export XLSX : output\distribution_appel_12-03-2026.xlsx
+2026-03-12 15:13:30,869 - INFO - Lignes traitées : 1000
+2026-03-12 15:13:30,869 - INFO - Traitement du fichier : hRMuB1oC.xls
+2026-03-12 15:13:30,870 - INFO - Conversion XLS \u2192 CSV
+2026-03-12 15:13:31,089 - INFO - Processor détecté : distribution_appel
+2026-03-12 15:13:32,324 - INFO - Export CSV : output\distribution_appel_09-01-2026.csv
+2026-03-12 15:13:32,324 - INFO - Export XLSX : output\distribution_appel_09-01-2026.xlsx
+2026-03-12 15:13:32,325 - INFO - Lignes traitées : 1752
+2026-03-12 15:13:32,325 - INFO - Traitement du fichier : hRMvg24C.xls
+2026-03-12 15:13:32,325 - INFO - Conversion XLS \u2192 CSV
+2026-03-12 15:13:33,180 - INFO - Processor détecté : distribution_etat_agent
+2026-03-12 15:13:39,482 - INFO - Export CSV : output\distribution_etat_agent_09-01-2026.csv
+2026-03-12 15:13:39,482 - INFO - Export XLSX : output\distribution_etat_agent_09-01-2026.xlsx
+2026-03-12 15:13:39,483 - INFO - Lignes traitées : 12336
+2026-03-12 15:16:46,748 - INFO - Demarrage du pipeline de traitement
+2026-03-12 15:16:46,748 - INFO - Traitement du fichier : hRMsF0cC.xls
+2026-03-12 15:16:46,749 - INFO - Conversion XLS \u2192 CSV
+2026-03-12 15:16:46,919 - INFO - Processor detecte : distribution_appel
+2026-03-12 15:16:48,449 - INFO - Export CSV : output\distribution_appel_12-03-2026.csv
+2026-03-12 15:16:48,449 - INFO - Export XLSX : output\distribution_appel_12-03-2026.xlsx
+2026-03-12 15:16:48,449 - INFO - Lignes traitées : 1000
+2026-03-12 15:16:48,449 - INFO - Traitement du fichier : hRMuB1oC.xls
+2026-03-12 15:16:48,449 - INFO - Conversion XLS \u2192 CSV
+2026-03-12 15:16:48,711 - INFO - Processor detecte : distribution_appel
+2026-03-12 15:16:50,091 - INFO - Export CSV : output\distribution_appel_09-01-2026.csv
+2026-03-12 15:16:50,091 - INFO - Export XLSX : output\distribution_appel_09-01-2026.xlsx
+2026-03-12 15:16:50,091 - INFO - Lignes traitées : 1752
+2026-03-12 15:16:50,091 - INFO - Traitement du fichier : hRMvg24C.xls
+2026-03-12 15:16:50,092 - INFO - Conversion XLS \u2192 CSV
+2026-03-12 15:16:50,961 - INFO - Processor detecte : distribution_etat_agent
+2026-03-12 15:16:57,271 - INFO - Export CSV : output\distribution_etat_agent_09-01-2026.csv
+2026-03-12 15:16:57,272 - INFO - Export XLSX : output\distribution_etat_agent_09-01-2026.xlsx
+2026-03-12 15:16:57,272 - INFO - Lignes traitées : 12336
+2026-03-12 15:22:09,087 - INFO - Demarrage du pipeline de traitement
+2026-03-12 15:22:09,089 - INFO - Traitement du fichier : hRMsF0cC.xls
+2026-03-12 15:22:09,089 - INFO - Conversion XLS â†’ CSV
+2026-03-12 15:22:09,276 - INFO - Processor detecte : distribution_appel
+2026-03-12 15:22:10,430 - INFO - Export CSV : output\distribution_appel_12-03-2026.csv
+2026-03-12 15:22:10,431 - INFO - Export XLSX : output\distribution_appel_12-03-2026.xlsx
+2026-03-12 15:22:10,431 - INFO - Lignes traitees : 1000
+2026-03-12 15:22:10,431 - INFO - Traitement du fichier : hRMuB1oC.xls
+2026-03-12 15:22:10,432 - INFO - Conversion XLS â†’ CSV
+2026-03-12 15:22:10,655 - INFO - Processor detecte : distribution_appel
+2026-03-12 15:22:12,014 - INFO - Export CSV : output\distribution_appel_09-01-2026.csv
+2026-03-12 15:22:12,014 - INFO - Export XLSX : output\distribution_appel_09-01-2026.xlsx
+2026-03-12 15:22:12,015 - INFO - Lignes traitees : 1752
+2026-03-12 15:22:12,015 - INFO - Traitement du fichier : hRMvg24C.xls
+2026-03-12 15:22:12,016 - INFO - Conversion XLS â†’ CSV
+2026-03-12 15:22:12,968 - INFO - Processor detecte : distribution_etat_agent
+2026-03-12 15:22:19,127 - INFO - Export CSV : output\distribution_etat_agent_09-01-2026.csv
+2026-03-12 15:22:19,127 - INFO - Export XLSX : output\distribution_etat_agent_09-01-2026.xlsx
+2026-03-12 15:22:19,127 - INFO - Lignes traitees : 12336
+2026-03-12 15:23:19,063 - INFO - Demarrage du pipeline de traitement
+2026-03-12 15:23:19,063 - INFO - Traitement du fichier : hRMsF0cC.xls
+2026-03-12 15:23:19,255 - INFO - Processor detecte : distribution_appel
+2026-03-12 15:23:20,377 - INFO - Export CSV : output\distribution_appel_12-03-2026.csv
+2026-03-12 15:23:20,378 - INFO - Export XLSX : output\distribution_appel_12-03-2026.xlsx
+2026-03-12 15:23:20,378 - INFO - Lignes traitees : 1000
+2026-03-12 15:23:20,378 - INFO - Traitement du fichier : hRMuB1oC.xls
+2026-03-12 15:23:20,633 - INFO - Processor detecte : distribution_appel
+2026-03-12 15:23:21,889 - INFO - Export CSV : output\distribution_appel_09-01-2026.csv
+2026-03-12 15:23:21,890 - INFO - Export XLSX : output\distribution_appel_09-01-2026.xlsx
+2026-03-12 15:23:21,890 - INFO - Lignes traitees : 1752
+2026-03-12 15:23:21,891 - INFO - Traitement du fichier : hRMvg24C.xls
+2026-03-12 15:23:22,743 - INFO - Processor detecte : distribution_etat_agent
+2026-03-12 15:23:29,210 - INFO - Export CSV : output\distribution_etat_agent_09-01-2026.csv
+2026-03-12 15:23:29,210 - INFO - Export XLSX : output\distribution_etat_agent_09-01-2026.xlsx
+2026-03-12 15:23:29,211 - INFO - Lignes traitees : 12336
+2026-03-12 15:23:54,041 - INFO - Demarrage du pipeline de traitement
+2026-03-12 15:23:54,042 - INFO - Traitement du fichier : hRMsF0cC.xls
+2026-03-12 15:23:54,042 - INFO - Conversion XLS â†’ CSV
+2026-03-12 15:23:54,209 - INFO - Processor detecte : distribution_appel
+2026-03-12 15:23:55,212 - INFO - Export CSV : output\distribution_appel_12-03-2026.csv
+2026-03-12 15:23:55,212 - INFO - Export XLSX : output\distribution_appel_12-03-2026.xlsx
+2026-03-12 15:23:55,212 - INFO - Lignes traitees : 1000
+2026-03-12 15:23:55,213 - INFO - Traitement du fichier : hRMuB1oC.xls
+2026-03-12 15:23:55,213 - INFO - Conversion XLS â†’ CSV
+2026-03-12 15:23:55,434 - INFO - Processor detecte : distribution_appel
+2026-03-12 15:23:56,758 - INFO - Export CSV : output\distribution_appel_09-01-2026.csv
+2026-03-12 15:23:56,758 - INFO - Export XLSX : output\distribution_appel_09-01-2026.xlsx
+2026-03-12 15:23:56,759 - INFO - Lignes traitees : 1752
+2026-03-12 15:23:56,759 - INFO - Traitement du fichier : hRMvg24C.xls
+2026-03-12 15:23:56,759 - INFO - Conversion XLS â†’ CSV
+2026-03-12 15:23:57,615 - INFO - Processor detecte : distribution_etat_agent
+2026-03-12 15:24:04,129 - INFO - Export CSV : output\distribution_etat_agent_09-01-2026.csv
+2026-03-12 15:24:04,129 - INFO - Export XLSX : output\distribution_etat_agent_09-01-2026.xlsx
+2026-03-12 15:24:04,129 - INFO - Lignes traitees : 12336
+2026-03-12 15:24:27,807 - INFO - Demarrage du pipeline de traitement
+2026-03-12 15:24:27,808 - INFO - Traitement du fichier : hRMsF0cC.xls
+2026-03-12 15:24:27,808 - INFO - Conversion XLS â†’ CSV
+2026-03-12 15:24:27,977 - INFO - Processor detecte : distribution_appel
+2026-03-12 15:24:29,050 - INFO - Export CSV : output\distribution_appel_12-03-2026.csv
+2026-03-12 15:24:29,050 - INFO - Export XLSX : output\distribution_appel_12-03-2026.xlsx
+2026-03-12 15:24:29,050 - INFO - Lignes traitees : 1000
+2026-03-12 15:24:29,050 - INFO - Traitement du fichier : hRMuB1oC.xls
+2026-03-12 15:24:29,051 - INFO - Conversion XLS â†’ CSV
+2026-03-12 15:24:29,291 - INFO - Processor detecte : distribution_appel
+2026-03-12 15:24:30,560 - INFO - Export CSV : output\distribution_appel_09-01-2026.csv
+2026-03-12 15:24:30,561 - INFO - Export XLSX : output\distribution_appel_09-01-2026.xlsx
+2026-03-12 15:24:30,561 - INFO - Lignes traitees : 1752
+2026-03-12 15:24:30,561 - INFO - Traitement du fichier : hRMvg24C.xls
+2026-03-12 15:24:30,561 - INFO - Conversion XLS â†’ CSV
+2026-03-12 15:24:31,437 - INFO - Processor detecte : distribution_etat_agent
+2026-03-12 15:24:37,654 - INFO - Export CSV : output\distribution_etat_agent_09-01-2026.csv
+2026-03-12 15:24:37,654 - INFO - Export XLSX : output\distribution_etat_agent_09-01-2026.xlsx
+2026-03-12 15:24:37,655 - INFO - Lignes traitees : 12336
