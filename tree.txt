@@ -1,0 +1,29 @@
+vocalcom_processor/
+│
+├── main.py
+├── config.py
+│
+├── downloader/
+│      vocalcom_downloader.py
+│
+├── processors/
+│      distribution_appel.py
+│      distribution_etat_agent.py
+│
+├── detectors/
+│      processor_detector.py
+│
+├── exporters/
+│      csv_exporter.py
+│      excel_exporter.py
+│
+├── utils/
+│      converter.py
+│      file_utils.py
+│
+├── input/
+├── output/
+├── temp/
+│
+└── logs/
+       app.log
