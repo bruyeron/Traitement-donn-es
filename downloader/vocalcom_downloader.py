@@ -70,7 +70,7 @@ def download_reports():
         logging.info("Mot de passe envoyé")
 
         # -------------------------------------------------
-        # 4️⃣ Attendre chargement du dashboard
+        # Attendre chargement du dashboard
         # -------------------------------------------------
 
         wait.until(
@@ -79,7 +79,7 @@ def download_reports():
 
         logging.info("Connexion réussie")
 
-        #Eto ny asina anle chemin maka anle rapport amzay zany
+        # Eto ny asina anle chemin maka anle rapport amzay zany
 
         time.sleep(20)
 
