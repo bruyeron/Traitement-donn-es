@@ -7,6 +7,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
 
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 from webdriver_manager.chrome import ChromeDriverManager
 
 from config import INPUT_DIR
@@ -16,7 +19,7 @@ def download_reports():
 
     logging.info("Démarrage du téléchargement Vocalcom")
 
-    # Configuration du dossier de téléchargement
+    # 📁 Configuration du dossier de téléchargement
     options = webdriver.ChromeOptions()
 
     prefs = {
@@ -32,38 +35,55 @@ def download_reports():
         options=options
     )
 
+    wait = WebDriverWait(driver, 20)
+
     try:
 
-        # 1️⃣ Aller sur Vocalcom
-        driver.get("URL_VOCALCOM")
+        driver.get("https://tapp1240wv.corp.telma.mg/hermes360/Admin/Launcher/login")
 
-        time.sleep(5)
+        logging.info("Page Vocalcom ouverte")
 
-        # 2️⃣ Connexion
-        username = driver.find_element(By.ID, "username")
-        password = driver.find_element(By.ID, "password")
+        # -------------------------------------------------
+        # Entrer le LOGIN
+        # -------------------------------------------------
 
-        username.send_keys("TON_LOGIN")
-        password.send_keys("TON_PASSWORD")
+        username = wait.until(
+            EC.presence_of_element_located((By.ID, "username"))
+        )
+
+        username.send_keys("WFM")
+        username.send_keys(Keys.RETURN)
+
+        logging.info("Login envoyé")
+
+        # -------------------------------------------------
+        # Entrer le PASSWORD
+        # -------------------------------------------------
+
+        password = wait.until(
+            EC.presence_of_element_located((By.ID, "password"))
+        )
+
+        password.send_keys("azer")
         password.send_keys(Keys.RETURN)
 
-        logging.info("Connexion Vocalcom envoyée")
+        logging.info("Mot de passe envoyé")
 
-        time.sleep(10)
+        # -------------------------------------------------
+        # 4️⃣ Attendre chargement du dashboard
+        # -------------------------------------------------
 
-        # 3️⃣ Aller vers la page des rapports
-        driver.get("URL_PAGE_RAPPORT")
+        wait.until(
+            EC.presence_of_element_located((By.TAG_NAME, "body"))
+        )
 
-        time.sleep(5)
+        logging.info("Connexion réussie")
 
-        # 4️⃣ Télécharger le rapport
-        download_button = driver.find_element(By.ID, "downloadButton")
-        download_button.click()
+        #Eto ny asina anle chemin maka anle rapport amzay zany
 
-        logging.info("Téléchargement du rapport lancé")
-
-        # 5️⃣ Attendre la fin du téléchargement
         time.sleep(20)
+
+        logging.info("Téléchargement terminé")
 
     except Exception as e:
 
