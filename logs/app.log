@@ -109,3 +109,34 @@
 2026-03-12 15:24:37,654 - INFO - Export CSV : output\distribution_etat_agent_09-01-2026.csv
 2026-03-12 15:24:37,654 - INFO - Export XLSX : output\distribution_etat_agent_09-01-2026.xlsx
 2026-03-12 15:24:37,655 - INFO - Lignes traitees : 12336
+2026-03-12 16:11:44,071 - INFO - Demarrage du pipeline de traitement
+2026-03-12 16:11:44,072 - INFO - Traitement du fichier : hQ4sdS8C.xls
+2026-03-12 16:11:44,072 - INFO - Conversion XLS → CSV
+2026-03-12 16:11:44,579 - INFO - Processor detecte : distribution_appel
+2026-03-12 16:11:47,090 - INFO - Export CSV : output\distribution_appel_02-03-2026.csv
+2026-03-12 16:11:47,090 - INFO - Export XLSX : output\distribution_appel_02-03-2026.xlsx
+2026-03-12 16:11:47,090 - INFO - Lignes traitees : 1974
+2026-03-12 16:11:47,091 - INFO - Traitement du fichier : hQ4uAUIC.xls
+2026-03-12 16:11:47,091 - INFO - Conversion XLS → CSV
+2026-03-12 16:11:48,255 - INFO - Processor detecte : distribution_etat_agent
+2026-03-12 16:11:55,638 - INFO - Export CSV : output\distribution_etat_agent_02-03-2026.csv
+2026-03-12 16:11:55,638 - INFO - Export XLSX : output\distribution_etat_agent_02-03-2026.xlsx
+2026-03-12 16:11:55,638 - INFO - Lignes traitees : 13008
+2026-03-12 16:11:55,638 - INFO - Traitement du fichier : hRNsb8MC.xls
+2026-03-12 16:11:55,639 - INFO - Conversion XLS → CSV
+2026-03-12 16:11:56,536 - INFO - Processor detecte : distribution_etat_agent
+2026-03-12 16:12:02,827 - INFO - Export CSV : output\distribution_etat_agent_01-08-2025.csv
+2026-03-12 16:12:02,827 - INFO - Export XLSX : output\distribution_etat_agent_01-08-2025.xlsx
+2026-03-12 16:12:02,828 - INFO - Lignes traitees : 11808
+2026-03-12 16:12:02,828 - INFO - Traitement du fichier : hRNt8-cC.xls
+2026-03-12 16:12:02,828 - INFO - Conversion XLS → CSV
+2026-03-12 16:12:03,077 - INFO - Processor detecte : distribution_appel
+2026-03-12 16:12:04,622 - INFO - Export CSV : output\distribution_appel_10-03-2026.csv
+2026-03-12 16:12:04,622 - INFO - Export XLSX : output\distribution_appel_10-03-2026.xlsx
+2026-03-12 16:12:04,622 - INFO - Lignes traitees : 1822
+2026-03-12 16:12:04,623 - INFO - Traitement du fichier : hRNtg9UC.xls
+2026-03-12 16:12:04,623 - INFO - Conversion XLS → CSV
+2026-03-12 16:12:05,610 - INFO - Processor detecte : distribution_etat_agent
+2026-03-12 16:12:13,022 - INFO - Export CSV : output\distribution_etat_agent_11-03-2026.csv
+2026-03-12 16:12:13,022 - INFO - Export XLSX : output\distribution_etat_agent_11-03-2026.xlsx
+2026-03-12 16:12:13,023 - INFO - Lignes traitees : 13824
