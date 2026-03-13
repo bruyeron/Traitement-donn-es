@@ -15,6 +15,10 @@ from detectors.processor_detector import detect_processor
 # Initialisation du logger
 logger = setup_logger()
 
+ensure_directory(INPUT_DIR)
+ensure_directory(OUTPUT_DIR)
+ensure_directory("logs")
+
 
 def main():
 
