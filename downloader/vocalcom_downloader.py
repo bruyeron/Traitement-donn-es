@@ -19,7 +19,10 @@ def download_reports():
 
     logging.info("Démarrage du téléchargement Vocalcom")
 
-    # 📁 Configuration du dossier de téléchargement
+    # -------------------------------------------------
+    # Configuration Chrome
+    # -------------------------------------------------
+
     options = webdriver.ChromeOptions()
 
     prefs = {
@@ -30,6 +33,15 @@ def download_reports():
 
     options.add_experimental_option("prefs", prefs)
 
+    # Options importantes pour éviter crash Chrome
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--start-maximized")
+
+    # Si tu veux lancer Chrome sans interface (automation serveur)
+    # options.add_argument("--headless=new")
+
     driver = webdriver.Chrome(
         service=Service(ChromeDriverManager().install()),
         options=options
@@ -39,12 +51,16 @@ def download_reports():
 
     try:
 
+        # -------------------------------------------------
+        # Ouvrir Vocalcom
+        # -------------------------------------------------
+
         driver.get("https://tapp1240wv.corp.telma.mg/hermes360/Admin/Launcher/login")
 
         logging.info("Page Vocalcom ouverte")
 
         # -------------------------------------------------
-        # Entrer le LOGIN
+        # LOGIN
         # -------------------------------------------------
 
         username = wait.until(
@@ -57,7 +73,7 @@ def download_reports():
         logging.info("Login envoyé")
 
         # -------------------------------------------------
-        # Entrer le PASSWORD
+        # PASSWORD
         # -------------------------------------------------
 
         password = wait.until(
@@ -70,7 +86,7 @@ def download_reports():
         logging.info("Mot de passe envoyé")
 
         # -------------------------------------------------
-        # Attendre chargement du dashboard
+        # Attendre chargement
         # -------------------------------------------------
 
         wait.until(
@@ -79,7 +95,9 @@ def download_reports():
 
         logging.info("Connexion réussie")
 
-        # Eto ny asina anle chemin maka anle rapport amzay zany
+        # -------------------------------------------------
+        # Ici tu ajouteras les actions pour accéder aux rapports
+        # -------------------------------------------------
 
         time.sleep(20)
 
