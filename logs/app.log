@@ -1,0 +1,53 @@
+2026-03-16 07:58:23,667 - INFO - Demarrage du pipeline de traitement
+2026-03-16 07:58:23,668 - INFO - Traitement du fichier : hRMsF0cC.xls
+2026-03-16 07:58:23,669 - INFO - Conversion XLS → CSV
+2026-03-16 07:58:24,012 - INFO - Processor detecte : distribution_appel
+2026-03-16 07:58:25,896 - INFO - Export CSV : output\distribution_appel_12-03-2026.csv
+2026-03-16 07:58:25,896 - INFO - Export XLSX : output\distribution_appel_12-03-2026.xlsx
+2026-03-16 07:58:25,896 - INFO - Lignes traitees : 1000
+2026-03-16 07:58:25,897 - INFO - Traitement du fichier : hRMuB1oC.xls
+2026-03-16 07:58:25,897 - INFO - Conversion XLS → CSV
+2026-03-16 07:58:26,304 - INFO - Processor detecte : distribution_appel
+2026-03-16 07:58:28,357 - INFO - Export CSV : output\distribution_appel_09-01-2026.csv
+2026-03-16 07:58:28,358 - INFO - Export XLSX : output\distribution_appel_09-01-2026.xlsx
+2026-03-16 07:58:28,358 - INFO - Lignes traitees : 1752
+2026-03-16 07:58:28,358 - INFO - Traitement du fichier : hRMvg24C.xls
+2026-03-16 07:58:28,359 - INFO - Conversion XLS → CSV
+2026-03-16 07:58:29,864 - INFO - Processor detecte : distribution_etat_agent
+2026-03-16 07:58:45,413 - INFO - Export CSV : output\distribution_etat_agent_09-01-2026.csv
+2026-03-16 07:58:45,413 - INFO - Export XLSX : output\distribution_etat_agent_09-01-2026.xlsx
+2026-03-16 07:58:45,413 - INFO - Lignes traitees : 12336
+2026-03-16 08:07:05,871 - INFO - Demarrage du pipeline de traitement
+2026-03-16 08:07:05,873 - INFO - Traitement du fichier : hRMsF0cC.xls
+2026-03-16 08:07:05,873 - INFO - Conversion XLS → CSV
+2026-03-16 08:07:06,228 - INFO - Processor detecte : distribution_appel
+2026-03-16 08:07:08,305 - INFO - Export CSV : output\distribution_appel_12-03-2026.csv
+2026-03-16 08:07:08,305 - INFO - Export XLSX : output\distribution_appel_12-03-2026.xlsx
+2026-03-16 08:07:08,308 - INFO - Lignes traitees : 1000
+2026-03-16 08:07:08,310 - INFO - Traitement du fichier : hRMuB1oC.xls
+2026-03-16 08:07:08,316 - INFO - Conversion XLS → CSV
+2026-03-16 08:07:08,883 - INFO - Processor detecte : distribution_appel
+2026-03-16 08:07:11,984 - INFO - Export CSV : output\distribution_appel_09-01-2026.csv
+2026-03-16 08:07:11,985 - INFO - Export XLSX : output\distribution_appel_09-01-2026.xlsx
+2026-03-16 08:07:11,989 - INFO - Lignes traitees : 1752
+2026-03-16 08:07:11,990 - INFO - Traitement du fichier : hRMvg24C.xls
+2026-03-16 08:07:11,990 - INFO - Conversion XLS → CSV
+2026-03-16 08:07:13,511 - INFO - Processor detecte : distribution_etat_agent
+2026-03-16 08:07:26,114 - INFO - Export CSV : output\distribution_etat_agent_09-01-2026.csv
+2026-03-16 08:07:26,115 - INFO - Export XLSX : output\distribution_etat_agent_09-01-2026.xlsx
+2026-03-16 08:07:26,115 - INFO - Lignes traitees : 12336
+2026-03-16 09:17:33,208 - INFO - ===== DÉMARRAGE DU PIPELINE =====
+2026-03-16 09:17:33,208 - INFO - Étape 1 : Téléchargement des rapports Vocalcom
+2026-03-16 09:17:41,878 - ERROR - Échec du pipeline : [WinError 1260] Ce programme est bloqué par une stratégie de groupe. Pour plus d’informations, contactez votre administrateur système
+2026-03-16 10:39:06,051 - INFO - Demarrage du pipeline de traitement
+2026-03-16 10:40:16,511 - INFO - Demarrage du pipeline de traitement
+2026-03-16 10:42:44,172 - INFO - Demarrage du pipeline de traitement
+2026-03-16 10:44:55,762 - INFO - Demarrage du pipeline de traitement
+2026-03-16 10:49:16,553 - INFO - Demarrage du pipeline de traitement
+2026-03-16 10:53:25,504 - INFO - Demarrage du pipeline de traitement
+2026-03-16 11:01:40,230 - INFO - Demarrage du pipeline de traitement
+2026-03-16 11:03:03,622 - INFO - Demarrage du pipeline de traitement
+2026-03-16 11:07:31,568 - INFO - Demarrage du pipeline de traitement
+2026-03-16 11:08:31,034 - INFO - Demarrage du pipeline de traitement
+2026-03-16 11:14:10,293 - INFO - Demarrage du pipeline de traitement
+2026-03-16 11:23:49,727 - INFO - Demarrage du pipeline de traitement

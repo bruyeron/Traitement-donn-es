@@ -1,5 +1,6 @@
 import os
 
+import shutil
 from config import INPUT_DIR, OUTPUT_DIR, TEMP_DIR
 
 from utils.file_utils import generate_filename, ensure_directory

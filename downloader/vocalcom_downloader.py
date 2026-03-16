@@ -1,114 +1,109 @@
+# downloader/vocalcom_downloader_playwright.py
+
 import os
 import time
 import logging
-
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.chrome.service import Service
-
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
-from webdriver_manager.chrome import ChromeDriverManager
-
+from pathlib import Path
+from dotenv import load_dotenv
+from playwright.sync_api import sync_playwright
 from config import INPUT_DIR
 
+load_dotenv()
 
 def download_reports():
-
     logging.info("Démarrage du téléchargement Vocalcom")
 
-    # -------------------------------------------------
-    # Configuration Chrome
-    # -------------------------------------------------
+    download_path = os.path.abspath(INPUT_DIR)
+    Path(download_path).mkdir(parents=True, exist_ok=True)
 
-    options = webdriver.ChromeOptions()
+    with sync_playwright() as p:
+        # Lancer le navigateur Chromium (non-headless pour visualiser)
+        browser = p.chromium.launch(headless=False)
+        # Créer un contexte autorisant les téléchargements
+        context = browser.new_context(accept_downloads=True)
+        page = context.new_page()
 
-    prefs = {
-        "download.default_directory": os.path.abspath(INPUT_DIR),
-        "download.prompt_for_download": False,
-        "download.directory_upgrade": True
-    }
+        try:
+            # -------------------------------------------------
+            # Page login
+            # -------------------------------------------------
+            page.goto("https://tapp1240wv.corp.telma.mg/hermes360/Admin/Launcher/login")
+            logging.info("Page Vocalcom ouverte")
 
-    options.add_experimental_option("prefs", prefs)
+            # -------------------------------------------------
+            # Saisir username
+            # -------------------------------------------------
+            username = os.getenv("USER_NAME_VOCALCOM", "WFM")
+            password = os.getenv("PASSWORD", "azer")
 
-    # Options importantes pour éviter crash Chrome
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--disable-gpu")
-    options.add_argument("--start-maximized")
+            page.fill("#usrID", username)
+            page.press("#usrID", "Enter")
+            logging.info("Login envoyé")
 
-    # Si tu veux lancer Chrome sans interface (automation serveur)
-    # options.add_argument("--headless=new")
+            # -------------------------------------------------
+            # Saisir password
+            # -------------------------------------------------
+            page.wait_for_selector("#usrPWD", timeout=15000)
+            page.fill("#usrPWD", password)
+            page.press("#usrPWD", "Enter")
+            logging.info("Mot de passe envoyé")
 
-    driver = webdriver.Chrome(
-        service=Service(ChromeDriverManager().install()),
-        options=options
-    )
+            # -------------------------------------------------
+            # Attendre que le workspace soit visible et cliquer
+            # -------------------------------------------------
+            workspace_selector = "li.workspace[data-screen='workspace'][title='Gestion des Workspaces']"
+            page.wait_for_selector(workspace_selector, timeout=20000)
+            page.click(workspace_selector)
+            logging.info("Workspace ouvert")
 
-    wait = WebDriverWait(driver, 20)
+            # -------------------------------------------------
+            # Attendre que le bouton Reporting apparaisse et cliquer dessus
+            # -------------------------------------------------
+            reporting_selector = "span.button-name[data-application-oid='f9LC8CUK']"
+            page.wait_for_selector(reporting_selector, timeout=20000)
+            page.click(reporting_selector)
+            logging.info("Reporting ouvert")
 
-    try:
+            # -------------------------------------------------
+            # Menu Report Agent
+            # -------------------------------------------------
+            page.wait_for_selector("#Mnuu_RepotAgent", timeout=15000)
+            page.click("#Mnuu_RepotAgent")
+            logging.info("Menu Agent Report ouvert")
 
-        # -------------------------------------------------
-        # Ouvrir Vocalcom
-        # -------------------------------------------------
+            # -------------------------------------------------
+            # Agent Distribution Report
+            # -------------------------------------------------
+            distribution_selector = "//td[@class='menutd2' and contains(@onclick,'AgentDistributionReport')]"
+            page.wait_for_selector(distribution_selector, timeout=15000)
+            page.click(distribution_selector)
+            logging.info("Agent Distribution Report sélectionné")
 
-        driver.get("https://tapp1240wv.corp.telma.mg/hermes360/Admin/Launcher/login")
+            # -------------------------------------------------
+            # Choisir format XLS
+            # -------------------------------------------------
+            page.wait_for_selector("#typeButton.XLS", timeout=15000)
+            page.click("#typeButton.XLS")
+            logging.info("Format XLS sélectionné")
 
-        logging.info("Page Vocalcom ouverte")
+            # -------------------------------------------------
+            # Générer le rapport et télécharger
+            # -------------------------------------------------
+            page.wait_for_selector("#generateButton", timeout=15000)
+            with page.expect_download() as download_info:
+                page.click("#generateButton")
+            download = download_info.value
 
-        # -------------------------------------------------
-        # LOGIN
-        # -------------------------------------------------
+            # Sauvegarder le fichier dans INPUT_DIR
+            filepath = os.path.join(download_path, download.suggested_filename)
+            download.save_as(filepath)
+            logging.info(f"Téléchargement terminé : {filepath}")
 
-        username = wait.until(
-            EC.presence_of_element_located((By.ID, "username"))
-        )
+            time.sleep(2)  # petite pause
 
-        username.send_keys("WFM")
-        username.send_keys(Keys.RETURN)
+        except Exception as e:
+            logging.error(f"Erreur téléchargement Vocalcom : {e}")
 
-        logging.info("Login envoyé")
-
-        # -------------------------------------------------
-        # PASSWORD
-        # -------------------------------------------------
-
-        password = wait.until(
-            EC.presence_of_element_located((By.ID, "password"))
-        )
-
-        password.send_keys("azer")
-        password.send_keys(Keys.RETURN)
-
-        logging.info("Mot de passe envoyé")
-
-        # -------------------------------------------------
-        # Attendre chargement
-        # -------------------------------------------------
-
-        wait.until(
-            EC.presence_of_element_located((By.TAG_NAME, "body"))
-        )
-
-        logging.info("Connexion réussie")
-
-        # -------------------------------------------------
-        # Ici tu ajouteras les actions pour accéder aux rapports
-        # -------------------------------------------------
-
-        time.sleep(20)
-
-        logging.info("Téléchargement terminé")
-
-    except Exception as e:
-
-        logging.error(f"Erreur téléchargement Vocalcom : {str(e)}")
-
-    finally:
-
-        driver.quit()
-
-        logging.info("Navigateur fermé")
+        finally:
+            browser.close()
+            logging.info("Navigateur fermé")
