@@ -1,25 +1,16 @@
-import os
-import time
-import logging
 
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.chrome.service import Service
-
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
-from webdriver_manager.chrome import ChromeDriverManager
 
 from config import INPUT_DIR
 
-from downloader.actions import etat_agent
+from downloader.actions import etat_agent, dist_appel
 
 from utils.browser_utils import create_chrome_driver
 
 ACTIONS = {
-    "1": ("Télécharger la distribution des états des agents", etat_agent.run)
+    "1": ("Télécharger la distribution des états des agents", etat_agent.run),
+    "2": ("Télécharger la distribution des états des agents", dist_appel.run),
+    
 }
 
 def download_reports():
@@ -31,7 +22,7 @@ def download_reports():
     choice = input("Entrez le numéro de l'action : ").strip()
 
     # download_dir = r"D:\Utilisateurs\soava.rakotomanana\Data\Rapport detaille\Brute" 
-    # download_dir = r"D:\Utilisateurs\soava.rakotomanana\Workspace\Automatisation\Traitement-donn-es\input" 
+    download_dir = r"D:\Utilisateurs\soava.rakotomanana\Workspace\Automatisation\Traitement-donn-es\input" 
     
 
     if choice not in ACTIONS:
@@ -41,7 +32,7 @@ def download_reports():
         print(f"▶️  Exécution de : {description}")
 
         # driver = webdriver.Chrome()
-        driver = create_chrome_driver(INPUT_DIR)
+        driver = create_chrome_driver(download_dir)
         try:
             action_func(driver)
         finally:
