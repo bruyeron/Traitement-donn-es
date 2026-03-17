@@ -14,6 +14,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 from config import INPUT_DIR
 
+from downloader.actions import etat_agent
 
 def download_reports():
 
@@ -67,8 +68,9 @@ def download_reports():
             EC.presence_of_element_located((By.ID, "username"))
         )
 
-        username.send_keys("WFM")
-        username.send_keys(Keys.RETURN)
+ACTIONS = {
+    "1": ("Télécharger la distribution des états des agents", etat_agent.run)
+}
 
         logging.info("Login envoyé")
 
@@ -103,12 +105,25 @@ def download_reports():
 
         logging.info("Téléchargement terminé")
 
-    except Exception as e:
+    print("=== Choisissez une action ===")
+    for key, (desc, _) in ACTIONS.items():
+        print(f"{key}. {desc}")
 
-        logging.error(f"Erreur téléchargement Vocalcom : {str(e)}")
+    choice = input("Entrez le numéro de l'action : ").strip()
 
-    finally:
+    # download_dir = r"D:\Utilisateurs\soava.rakotomanana\Data\Rapport detaille\Brute" 
+    download_dir = r"D:\Utilisateurs\soava.rakotomanana\Workspace\Automatisation\Traitement-donn-es\input" 
+    
 
-        driver.quit()
+    if choice not in ACTIONS:
+        print("❌ Choix invalide")
+    else:
+        description, action_func = ACTIONS[choice]
+        print(f"▶️  Exécution de : {description}")
 
-        logging.info("Navigateur fermé")
+        # driver = webdriver.Chrome()
+        driver = create_chrome_driver(download_dir)
+        try:
+            action_func(driver)
+        finally:
+            driver.quit()
