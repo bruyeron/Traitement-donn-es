@@ -14,9 +14,11 @@ def create_chrome_driver(download_dir: str):
     chrome_options.add_argument("--no-sandbox")            # utile pour Linux ou environnements isolés
     chrome_options.add_argument("--disable-dev-shm-usage") # améliore la stabilité
     chrome_options.add_argument("--disable-gpu")           # recommandé pour Windows
-    chrome_options.add_argument("--window-size=1920,1080") # évite les erreurs de résolution
+    # chrome_options.add_argument("--window-size=1920,1080") # évite les erreurs de résolution
     chrome_options.add_argument("--log-level=3")           # moins de logs inutiles
     # chrome_options.add_argument("--incognito")
+    chrome_options.add_argument("--start-maximized")
+    chrome_options.add_argument("--ignore-certificate-errors")
 
     chrome_options.add_experimental_option("prefs", {
         "download.default_directory": download_dir,

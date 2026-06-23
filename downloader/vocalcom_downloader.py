@@ -9,7 +9,7 @@ from utils.browser_utils import create_chrome_driver
 
 ACTIONS = {
     "1": ("Télécharger la distribution des états des agents", etat_agent.run),
-    "2": ("Télécharger la distribution des états des agents", dist_appel.run),
+    "2": ("Télécharger la distribution d'appel", dist_appel.run),
     
 }
 
